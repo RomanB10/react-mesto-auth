@@ -1,0 +1,70 @@
+.profile__container{
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.profile__container {
+  position: relative;
+  width: 100%;
+  max-width: 100px;
+  min-width: 120px;
+  min-height: 120px;
+}
+
+.profile__container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.profile__container:hover::before {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.profile__container button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+*/

@@ -1,0 +1,10 @@
+.popup__container_type_register{
+    background-color: #000000;
+}
+
+/*@media (max-width: 510px) {
+    .popup__container_type_register {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }*/

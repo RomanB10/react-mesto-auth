@@ -1,0 +1,31 @@
+.profile {
+  margin: 40px auto 50px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 880px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+@media (max-width: 680px) {
+  .profile {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-width: 282px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 320px) {
+  .profile {
+    margin: 42px auto 36px;
+  }
+}

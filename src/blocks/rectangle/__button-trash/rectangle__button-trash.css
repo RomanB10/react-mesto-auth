@@ -1,0 +1,19 @@
+.rectangle__button-trash{
+  display: none;
+  width: 18px;
+  height: 19px;
+  cursor: pointer;
+  border: 0;
+  background-image: url('../../../images/buttons/Trash.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.rectangle__button-trash:hover {
+  opacity: .5;
+}

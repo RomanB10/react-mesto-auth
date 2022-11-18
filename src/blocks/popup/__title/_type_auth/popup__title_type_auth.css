@@ -1,0 +1,14 @@
+.popup__title_type_auth {
+    color: #ffffff;
+    text-align: center;
+    padding: 65px 0 0 0;
+}
+
+@media (max-width: 510px) {
+    .popup__title_type_auth {
+      min-width: 238px;
+      font-size: 20px;
+      line-height: 24px;
+      padding-top: 40px;
+    }
+  }

@@ -1,0 +1,20 @@
+.profile__info {
+  max-width: 336px;
+  font-size: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto-fit, 1fr));
+  grid-template-rows: repeat(2, minmax(auto-fit, 1fr));
+  grid-template-areas:
+    "profile__title profile__edit-btn"
+    "profile__subtitle profile__subtitle";
+  column-gap: 20px;
+  row-gap: 8px;
+}
+
+@media (max-width: 680px) {
+  .profile__info {
+    max-width: 282px;
+    column-gap: 10px;
+    row-gap: 8px;
+  }
+}

@@ -1,0 +1,21 @@
+.popup__image-union{
+    width: 120px;
+    height: 120px;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    object-fit: cover;
+    color: white;
+}
+
+/*
+.popup__image-union_type_succsess{
+    width: 120px;
+    height: 120px;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    object-fit: cover;
+    color: white;
+    background-image: url(../../../images/unionSuccess.svg);
+}*/

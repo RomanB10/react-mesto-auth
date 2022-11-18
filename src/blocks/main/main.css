@@ -1,0 +1,11 @@
+.main {
+  margin: auto;
+}
+
+@media (max-width: 918px) {
+  .main {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+}
+

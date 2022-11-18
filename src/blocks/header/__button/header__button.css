@@ -1,0 +1,44 @@
+.header__button{
+    color: #A9A9A9;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+@media (max-width: 320px) {
+   .header__button {
+    background-image: url('../../../images/buttons/Group\ 5.svg');
+    }
+  }
+
+
+/*
+.popup__close-btn {
+    vertical-align: bottom;
+    background-color: transparent;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    background-image: url('../../../images/buttons/CloseIconBig.svg');
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .popup__close-btn:hover {
+    opacity: .6;
+  }
+  
+  @media (max-width: 510px) {
+    .popup__close-btn {
+      background-image: url('../../../images/buttons/CloseIcon.svg');
+      width: 20px;
+      height: 20px;
+      top: -36px;
+      right: 0;
+    }
+  }*/

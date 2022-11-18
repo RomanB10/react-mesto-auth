@@ -1,0 +1,12 @@
+.popup__form_type_union{
+    min-height: 330px;
+}
+
+@media (max-width: 510px) {
+    .popup__form_type_union {
+        max-width: 280px;
+       /* padding-left: 25px;
+        padding-right: 25px;*/
+  }
+}
+
