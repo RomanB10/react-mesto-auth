@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import  unionFail from "../images/unionFail.svg";
-import unionSuccess from "../images/unionSuccess.svg";
 
 import Header from "./Header";
 import Main from "./Main";
@@ -35,12 +33,10 @@ function App() {
 
   const [selectedCard, setSelectedCard] = useState(null);
 
-
-  const [registered, setRegistered] = useState(false); //инфо о авторизованы мы или нет
   const [loggedIn, setLoggedIn] = useState(false); //инфо о авторизованы мы или нет
   const [loading, setLoading] = useState(true); //инфо идет загрузка или нет
   const [userData, setUserData] = useState({}); // Состояние пользователя _id, email
-  
+
   // Стейт, отвечающий за данные ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ
   const [currentUser, setCurrentUser] = useState({});
 
@@ -63,9 +59,9 @@ function App() {
     setSelectedCard(card);
   }
 
- function handleConfirmationClick(){
-  setIsConfirmationPopupOpen(true);
- }
+  function handleConfirmationClick() {
+    setIsConfirmationPopupOpen(true);
+  }
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
@@ -73,11 +69,8 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setSelectedCard(null);
     setIsConfirmationPopupOpen(false);
-    setTooltipStatus(false);
-
-  /* setIsloginPopupOpen(false)*/
+    setIsInfoToolTipOpen(false);
   }
-
 
   //Отправка на сервер данных (name, description).Объект значений передается из EditProfilePopup
   function handleUpdateUser(data) {
@@ -140,23 +133,10 @@ function App() {
       });
   }
 
- 
- function handleSubmit(event){
-  event.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
 
-   /* api
-      .removeCard(card._id)
-      .then(() => {
-        const updatedCards = cards.filter(function (item) {
-          return item._id !== card._id;
-        }); //возвращает новый массив без карточки, в которой кликнули по корзине
-        setCards(updatedCards); //обновляем стейт карточек локально
-      })
-      .catch((err) => {
-        console.log(err);
-      });*/
- }
- 
   //Функция удаления карточки
   function handleCardDelete(card) {
     handleConfirmationClick(true);
@@ -197,32 +177,6 @@ function App() {
         console.log(err);
       });
   }, []);
-/*
-  useEffect(() => {
-    function handleEscClose(evt){
-      if (evt.key === "Escape") {
-        closeAllPopups();
-      }
-    };
-
-if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || isConfirmationPopupOpen){
-  document.addEventListener('keydown', handleEscClose())
-  return ()=>{ document.removeEventListener('keydown', handleEscClose())}
-} 
-    
-
-  }, [isEditProfilePopupOpen,isAddPlacePopupOpen,isEditAvatarPopupOpen,isConfirmationPopupOpen]);
-*/
-
-//Повторяющаяся функциональность
-/*const cbAuthenticate = useCallback((data) => {
-  localStorage.setItem("jwt", data.token);//сохраняем jwt
-  setLoggedIn(true);
-  /*console.log('data.user',data)
-  console.log('cbAuthenticate data',data)
-  console.log('cbAuthenticate data',userData)
-  setUserData(data);//не нужно
-},[]);*/
 
   //ЗАПРОС ПРОВЕРКИ ТОКЕНА
   const tokenCheck = useCallback(async () => {
@@ -233,7 +187,6 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
         throw new Error("no token");
       }
       const user = await Auth.chekToken(jwt); //await использую, чтобы не писать логику в then
-      console.log("ПРОВЕРКА ТОКЕНА",user)
       if (!user) {
         throw new Error("invalid user");
       }
@@ -242,42 +195,50 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
         setUserData(user); //Обновление стэйта данными с ссервера _id, email
       }
     } catch (err) {
-      console.log(err);
+      if (err === 400) {
+        console.log("400 — Токен не передан или передан не в том формате");
+      }
+      if (err === 401) {
+        console.log("401 — Переданный токен некорректен");
+      } else {
+        console.log(`Ошибка:${err}`);
+      }
     } finally {
       setLoading(false); // установка состояния загрузки лучше перенести в finally
     }
   }, []);
-
 
   //ЗАПРОС НА АВТОРИЗАЦИЮ, результат в дату.Как пропс handleLogin передаем в компонент Login (там как аргументы передаем емаил и пароль)
   const cbLogin = useCallback(
     async (password, email) => {
       try {
         setLoading(true);
-        const data = await Auth.authorize(password, email);//записали TOKEN В data
-        console.log('АВТОРИЗАЦИЯ',data)
+        const data = await Auth.authorize(password, email); //записали TOKEN В data
         if (!data) {
           throw new Error("Неверные имя или пароль пользователя");
         }
-        
         if (data.token) {
-          localStorage.setItem("jwt", data.token);//сохраняем jwt
-          setRegistered(true);
-          setIsInfoToolTipOpen(true)
-          setTooltipStatus(`Вы успешно зарегистрировались!`);
+          localStorage.setItem("jwt", data.token); //сохраняем jwt
+          setTooltipStatus(`success`);
           setLoggedIn(true);
-          setUserData({...data, data});
           return data;
         }
       } catch (err) {
-        setIsInfoToolTipOpen(true)
-        setTooltipStatus(`Что-то пошло не так! Попробуйте еще раз.`);
-        console.log(err);
+        setIsInfoToolTipOpen(true);
+        setTooltipStatus(`fail`);
+        if (err === 400) {
+          console.log("400 - Не передано одно из полей");
+        }
+        if (err === 401) {
+          console.log("401 - пользователь с email не найден");
+        } else {
+          console.log(`Ошибка:${err}`);
+        }
       } finally {
         setLoading(false);
       }
     },
-    []
+    [setTooltipStatus, setLoggedIn, setLoading, setIsInfoToolTipOpen]
   );
 
   //ЗАПРОС НА РЕГИСТРАЦИЮ
@@ -286,24 +247,25 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
       try {
         setLoading(true);
         const data = await Auth.register(password, email);
-        console.log('РЕГИСТРАЦИЯ и вернули',data) //_id, email
         if (!data) {
           throw new Error("Неверные имя или пароль пользователя");
         }
-          setUserData(data)
-          setRegistered(true);
-          setIsInfoToolTipOpen(true)
-          setTooltipStatus(`Вы успешно зарегистрировались!`);
-          return data;
+        setIsInfoToolTipOpen(true);
+        setTooltipStatus(`success`);
+        return data;
       } catch (err) {
-        setIsInfoToolTipOpen(true)
-        setTooltipStatus(`Что-то пошло не так! Попробуйте еще раз.`);
-        console.log(err);
+        setIsInfoToolTipOpen(true);
+        setTooltipStatus(`fail`);
+        if (err === 400) {
+          console.log("400 - Некорректно заполнено одно из полей");
+        } else {
+          console.log(`Ошибка:${err}`);
+        }
       } finally {
         setLoading(false);
       }
     },
-    []
+    [setTooltipStatus, setLoading, setIsInfoToolTipOpen]
   );
 
   //Колбэк ВЫХОДА ИЗ СИСТЕМЫ(обнуление стэйтов и удаление токена из хранилища)
@@ -326,7 +288,11 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
     <div className="root">
       <div className="page root__section">
         <CurrentUserContext.Provider value={currentUser}>
-          <Header onLogout={cbLogout} isLoggedIn={loggedIn} userData={userData}/>
+          <Header
+            onLogout={cbLogout}
+            isLoggedIn={loggedIn}
+            userData={userData}
+          />
           <Switch>
             <ProtectedRoute
               exact
@@ -349,10 +315,7 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
               />
             </Route>
             <Route path="/signup">
-              <Register
-                onRegister={cbRegister}
-                isLoggedIn={loggedIn}
-              />
+              <Register onRegister={cbRegister} isLoggedIn={loggedIn} />
             </Route>
             <Route path="*">
               <PageNotFound />
@@ -362,7 +325,7 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
             </Route>
           </Switch>
           <Footer />
-          
+
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
@@ -388,7 +351,11 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
             onUpdateAvatar={handleUpdateAvatar}
           />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-          <InfoTooltip tooltipStatus={tooltipStatus} isInfoToolTipOpen={isInfoToolTipOpen} onClose={closeAllPopups} registered={registered}  />
+          <InfoTooltip
+            tooltipStatus={tooltipStatus}
+            isInfoToolTipOpen={isInfoToolTipOpen}
+            onClose={closeAllPopups}
+          />
         </CurrentUserContext.Provider>
       </div>
     </div>
@@ -396,8 +363,3 @@ if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || is
 }
 
 export default App;
-/*
-            <Route>
-              {loggedIn ? <Redirect exact to="/" /> : <Redirect to="/signin" />}
-            </Route>
-            */

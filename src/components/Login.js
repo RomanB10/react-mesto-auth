@@ -1,9 +1,7 @@
 import { useState } from "react";
-import PopupWithForm from "./PopupWithForm"; //подгрузили компонент формы
 import { Redirect } from "react-router-dom";
-import InfoTooltip from "./InfoTooltip";
 
-function Login({onClose, handleLogin, isLoggedIn }) {
+function Login({ handleLogin, isLoggedIn }) {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -31,49 +29,65 @@ function Login({onClose, handleLogin, isLoggedIn }) {
 
   return (
     <div className="loginContainer">
-      <PopupWithForm
-        id="1"
-        name="_type_auth"
-        title="Вход"
-        btnText="Войти"
-        isOpen={true} //в скобках передаваемый пропс из APP, далее прокидываем его в компонент PopupWithForm
-        onSubmit={handleSubmit}
-      >
-        <div className="popup__form-item popup__form-item_type_auth">
-          <input
-            className="popup__input popup__input_type_auth"
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Email"
-            required
-            minLength="2"
-            maxLength="40"
-            title=" Длина поля должна быть 2 и более символов и менее или равно 40"
-            tabIndex="1"
-            value={userData.email || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
-            onChange={handleChange}
-          />
-          <span className="name-error popup__input-error" />
-        </div>
-        <div className="popup__form-item popup__form-item_type_auth">
-          <input
-            className="popup__input popup__input_type_auth"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Пароль"
-            required
-            minLength="2"
-            maxLength="200"
-            title=" Длина поля должна быть 2 и более символов и менее или равно 200"
-            tabIndex="2"
-            value={userData.password || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
-            onChange={handleChange}
-          />
-          <span className="job-error popup__input-error" />
-        </div>
-      </PopupWithForm>
+      <div className={`popup__container popup__container_type_auth`}>
+        <form
+          className={`popup__form popup__form_type_auth`}
+          action="./scripts/script.js"
+          method="post"
+          name={`_type_auth`}
+          noValidate
+          tabIndex="0"
+          onSubmit={handleSubmit}
+        >
+          <h3 className={`popup__title popup__title_type_auth`}>Вход</h3>
+
+          <fieldset className={`popup__form-items popup__form-items_type_auth`}>
+            <div className="popup__form-item popup__form-item_type_auth">
+              <input
+                className="popup__input popup__input_type_auth"
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Email"
+                required
+                minLength="2"
+                maxLength="40"
+                title=" Длина поля должна быть 2 и более символов и менее или равно 40"
+                tabIndex="1"
+                value={userData.email || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
+                onChange={handleChange}
+              />
+              <span className="name-error popup__input-error" />
+            </div>
+            <div className="popup__form-item popup__form-item_type_auth">
+              <input
+                className="popup__input popup__input_type_auth"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Пароль"
+                required
+                minLength="2"
+                maxLength="200"
+                title=" Длина поля должна быть 2 и более символов и менее или равно 200"
+                tabIndex="2"
+                value={userData.password || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
+                onChange={handleChange}
+              />
+              <span className="job-error popup__input-error" />
+            </div>
+          </fieldset>
+
+          <button
+            type="submit"
+            name="submit"
+            className={`popup__submit-btn popup__submit-btn_type_auth`}
+            tabIndex="3"
+          >
+            Войти
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

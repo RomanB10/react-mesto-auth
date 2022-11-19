@@ -5,3 +5,10 @@
     flex-direction: row;
     list-style-type: none;
 }
+
+@media (max-width: 320px) {
+    .header__nav {
+        padding-left: 30px;
+        flex-direction: column;
+    }
+}

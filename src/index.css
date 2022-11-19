@@ -10,6 +10,10 @@
 @import url(./blocks/header/__nav/header__nav.css);
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/header/__button/header__button.css);
+@import url(./blocks/header/__dropbutton/header__dropbutton.css);
+@import url(./blocks/header/__nav-content/header__nav-content.css);
+@import url(./blocks/header/__dropbtnclose/header__dropbtnclose.css);
+@import url(./blocks/header/__dropdown/header__dropdown.css);
 
 
 @import url(./blocks/main/main.css);
@@ -64,25 +68,6 @@
 @import url(./blocks/popup/__form-items/popup__form-items.css);
 @import url(./blocks/popup/__form-item/popup__form-item.css);
 
-/*
-@import url(./blocks/popup/__form/_type_success/popup__form_type_success.css);
-@import url(./blocks/popup/__image-union/popup__image-union.css);
-@import url(./blocks/popup/__title-profile_union/popup__title-profile_union.css);
-@import url(./blocks/header/__menu/header__menu.css);
-@import url(./blocks/popup/__title-profile_auth/popup__title-profile_auth.css);
-@import url(./blocks/popup/__form-items_auth/popup__form-items_auth.css);
-@import url(./blocks/popup/__form-item_type_auth/popup__form-item_type_auth.css);
-@import url(./blocks/popup/__submit-btn_white/popup__submit-btn_white.css);
-@import url(./blocks/popup/__container_auth/popup__container_auth.css);
-@import url(./blocks/popup/__input_type_auth/popup__input_type_auth.css);
-@import url(./blocks/popup/__question/popup__question.css);
-
-@import url(./blocks/popup/__container_register/popup__container_register.css);
-@import url(./blocks/popup/__title-profile_register/popup__title-profile_register.css);
-@import url(./blocks/popup/__form-items_register/popup__form-items_register.css);
-@import url(./blocks/popup/__form-item_type_register/popup__form-item_type_register.css);
-@import url(./blocks/popup/__input_type_register/popup__input_type_register.css);
-@import url(./blocks/popup/__submit-btn_register/popup__submit-btn_register.css)*/
 
 @import url(./blocks/popup/__container/_type_register/popup__container_type_register.css);
 @import url(./blocks/popup/__title/_type_register/popup__title_type_register.css);
@@ -110,3 +95,7 @@
 @import url(./blocks/popup/__title/_type_union/popup__title_type_union.css);
 @import url(./blocks/popup/__image-union/popup__image-union.css);
 @import url(./blocks/popup/__form/_type_union/popup__form_type_union.css);
+
+@import url(./blocks/not-found/not-found.css);
+@import url(./blocks/not-found/__title/not-found__title.css);
+@import url(./blocks/not-found/__button/not-found__button.css);

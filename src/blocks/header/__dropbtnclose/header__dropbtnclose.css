@@ -1,0 +1,11 @@
+.header__dropbtnclose{
+    width: 24px;
+    height: 21px;
+    background-color: transparent;
+    border: none;
+    background-image: url('../../../images/buttons/CloseIconGroup\ 5.svg');
+}
+
+.header__dropbtnclose:hover{
+    opacity: .6;
+}

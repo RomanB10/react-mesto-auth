@@ -1,0 +1,11 @@
+.not-found__button {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Roboto';
+    padding: 15px 60px;
+}
+
+.not-found__button:hover {
+    opacity: 0.6;
+}
