@@ -28,14 +28,12 @@ function Login({ handleLogin, isLoggedIn }) {
   }
 
   return (
-    <div className="loginContainer">
       <div className={`popup__container popup__container_type_auth`}>
         <form
           className={`popup__form popup__form_type_auth`}
           action="./scripts/script.js"
           method="post"
           name={`_type_auth`}
-          noValidate
           tabIndex="0"
           onSubmit={handleSubmit}
         >
@@ -52,12 +50,10 @@ function Login({ handleLogin, isLoggedIn }) {
                 required
                 minLength="2"
                 maxLength="40"
-                title=" Длина поля должна быть 2 и более символов и менее или равно 40"
                 tabIndex="1"
                 value={userData.email || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
                 onChange={handleChange}
               />
-              <span className="name-error popup__input-error" />
             </div>
             <div className="popup__form-item popup__form-item_type_auth">
               <input
@@ -69,12 +65,10 @@ function Login({ handleLogin, isLoggedIn }) {
                 required
                 minLength="2"
                 maxLength="200"
-                title=" Длина поля должна быть 2 и более символов и менее или равно 200"
                 tabIndex="2"
                 value={userData.password || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
                 onChange={handleChange}
               />
-              <span className="job-error popup__input-error" />
             </div>
           </fieldset>
 
@@ -88,7 +82,6 @@ function Login({ handleLogin, isLoggedIn }) {
           </button>
         </form>
       </div>
-    </div>
   );
 }
 

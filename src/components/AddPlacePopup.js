@@ -32,7 +32,6 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 
   return (
     <PopupWithForm
-      id="2"
       name="add-card"
       title="Новое место"
       btnText="Сохранить"
@@ -50,12 +49,10 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           required
           minLength="2"
           maxLength="30"
-          title=" Длина поля должна быть 2 и более символов и менее или равно 30"
           tabIndex="1"
           value={name}
           onChange={handleChangeName}
         />
-        <span className="placeName-error popup__input-error" />
       </div>
       <div className="popup__form-item">
         <input
@@ -65,12 +62,10 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           id="placeImage"
           placeholder="Ссылка на картинку"
           required
-          title="Введите URL"
           tabIndex="2"
           value={link}
           onChange={handleChangeLink}
         />
-        <span className="placeImage-error popup__input-error" />
       </div>
     </PopupWithForm>
   );

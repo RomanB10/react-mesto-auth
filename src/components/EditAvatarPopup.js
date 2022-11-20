@@ -20,7 +20,6 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
   return (
     <PopupWithForm
-      id="4"
       name="change-avatar"
       title="Обновить аватар"
       btnText="Сохранить"
@@ -40,7 +39,6 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
           tabIndex="1"
           ref={avatarRef}
         />
-        <span className="avatar-error popup__input-error" />
       </div>
     </PopupWithForm>
   );

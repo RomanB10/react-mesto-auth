@@ -27,15 +27,15 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false);
-
+  //переменные состояния тултипа
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
   const [tooltipStatus, setTooltipStatus] = useState("");
 
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);//выбранная картинка для увеличенного размера
 
   const [loggedIn, setLoggedIn] = useState(false); //инфо о авторизованы мы или нет
   const [loading, setLoading] = useState(true); //инфо идет загрузка или нет
-  const [userData, setUserData] = useState({}); // Состояние пользователя _id, email
+  const [userData, setUserData] = useState({}); // состояние пользователя _id, email
 
   // Стейт, отвечающий за данные ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ
   const [currentUser, setCurrentUser] = useState({});
@@ -154,8 +154,11 @@ function App() {
       });
   }
 
+
+
   //Запрос к серверу за данными (загрузка текущего ПОЛЬЗОВАТЕЛЯ)
   useEffect(() => {
+    if (loggedIn){
     api
       .getUserInfo()
       .then((dataFromServer) => {
@@ -164,10 +167,12 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    }
+  }, [loggedIn]);
 
   //Запрос к серверу за данными (загрузка КАРТОЧЕК)
   useEffect(() => {
+    if (loggedIn){
     api
       .getAllCards()
       .then((dataFromServer) => {
@@ -176,7 +181,9 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    }
+  }, [loggedIn]);
+
 
   //ЗАПРОС ПРОВЕРКИ ТОКЕНА
   const tokenCheck = useCallback(async () => {
@@ -192,7 +199,7 @@ function App() {
       }
       if (user) {
         setLoggedIn(true);
-        setUserData(user); //Обновление стэйта данными с ссервера _id, email
+        setUserData(user.data); //Обновление стэйта данными с ссервера _id, email*/
       }
     } catch (err) {
       if (err === 400) {
@@ -219,6 +226,7 @@ function App() {
         }
         if (data.token) {
           localStorage.setItem("jwt", data.token); //сохраняем jwt
+          setUserData({email:`${email}`})
           setTooltipStatus(`success`);
           setLoggedIn(true);
           return data;
@@ -250,11 +258,9 @@ function App() {
         if (!data) {
           throw new Error("Неверные имя или пароль пользователя");
         }
-        setIsInfoToolTipOpen(true);
         setTooltipStatus(`success`);
         return data;
       } catch (err) {
-        setIsInfoToolTipOpen(true);
         setTooltipStatus(`fail`);
         if (err === 400) {
           console.log("400 - Некорректно заполнено одно из полей");
@@ -262,6 +268,7 @@ function App() {
           console.log(`Ошибка:${err}`);
         }
       } finally {
+        setIsInfoToolTipOpen(true);
         setLoading(false);
       }
     },
@@ -290,7 +297,6 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
           <Header
             onLogout={cbLogout}
-            isLoggedIn={loggedIn}
             userData={userData}
           />
           <Switch>

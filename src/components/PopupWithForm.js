@@ -27,7 +27,6 @@ function PopupWithForm(props) {
           action="./scripts/script.js"
           method="post"
           name={`${props.name}`}
-          noValidate
           tabIndex="0"
           onSubmit={props.onSubmit}
         >

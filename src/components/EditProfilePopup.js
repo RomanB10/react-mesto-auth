@@ -54,12 +54,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           required
           minLength="2"
           maxLength="40"
-          title=" Длина поля должна быть 2 и более символов и менее или равно 40"
           tabIndex="1"
           value={name || ""}//добавили проверку,чтобы в value инпута не попадало значение undefined
           onChange={handleChangeName}
         />
-        <span className="name-error popup__input-error" />
       </div>
       <div className="popup__form-item">
         <input
@@ -71,12 +69,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           required
           minLength="2"
           maxLength="200"
-          title=" Длина поля должна быть 2 и более символов и менее или равно 200"
           tabIndex="2"
           value={description || ""}//добавили проверку,чтобы в value инпута не попадало значение undefined
           onChange={handleChangeDescription}
         />
-        <span className="job-error popup__input-error" />
       </div>
     </PopupWithForm>
   );

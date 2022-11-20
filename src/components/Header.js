@@ -1,7 +1,7 @@
-import headerLogo from "../images/logo.svg"; 
+import headerLogo from "../images/logo.svg";
 import { Link, Route, Switch } from "react-router-dom";
 
-function Header({ isLoggedIn, onLogout, userData }) {
+function Header({ onLogout, userData }) {
   return (
     <header className="header root__section">
       <img
@@ -11,12 +11,12 @@ function Header({ isLoggedIn, onLogout, userData }) {
       />
 
       <div className="header__dropdown">
-        {isLoggedIn ? (
-          <>
-            <ul className={`header__nav  header__nav-content`}>
+        <ul className={`header__nav  header__nav-content`}>
+          <Switch>
+            <Route exact path="/">
               <li>
                 <p className="header__link">
-                  {userData.data === undefined ? "":userData.data.email}
+                  {userData.email}
                 </p>
               </li>
               <li>
@@ -27,30 +27,23 @@ function Header({ isLoggedIn, onLogout, userData }) {
                   Выйти
                 </button>
               </li>
-            </ul>
-          </>
-        ) : (
-          <>
-            <ul className={`header__nav  header__nav-content`}>
-              <Switch>
-                <Route exact path="/signup">
-                  <li>
-                    <Link to="/signin" className="header__link">
-                      Войти
-                    </Link>
-                  </li>
-                </Route>
-                <Route exact path="/signin">
-                  <li>
-                    <Link to="/signup" className="header__link">
-                      Регистрация
-                    </Link>
-                  </li>
-                </Route>
-              </Switch>
-            </ul>
-          </>
-        )}
+            </Route>
+            <Route exact path="/signup">
+              <li>
+                <Link to="/signin" className="header__link">
+                  Войти
+                </Link>
+              </li>
+            </Route>
+            <Route exact path="/signin">
+              <li>
+                <Link to="/signup" className="header__link">
+                  Регистрация
+                </Link>
+              </li>
+            </Route>
+          </Switch>
+        </ul>
       </div>
     </header>
   );

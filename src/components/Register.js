@@ -31,14 +31,12 @@ function Register({ onRegister, isLoggedIn }) {
   }
 
   return (
-    <div className="registerContainer">
       <div className={`popup__container popup__container_type_register`}>
         <form
           className={`popup__form popup__form_type_register`}
           action="./scripts/script.js"
           method="post"
           name={`_type_auth`}
-          noValidate
           tabIndex="0"
           onSubmit={handleSubmit}
         >
@@ -59,7 +57,6 @@ function Register({ onRegister, isLoggedIn }) {
                 required
                 minLength="2"
                 maxLength="40"
-                title=" Длина поля должна быть 2 и более символов и менее или равно 40"
                 tabIndex="1"
                 value={userData.email || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
                 onChange={handleChange}
@@ -76,7 +73,6 @@ function Register({ onRegister, isLoggedIn }) {
                 required
                 minLength="2"
                 maxLength="200"
-                title=" Длина поля должна быть 2 и более символов и менее или равно 200"
                 tabIndex="2"
                 value={userData.password || ""} //добавили проверку,чтобы в value инпута не попадало значение undefined
                 onChange={handleChange}
@@ -102,7 +98,6 @@ function Register({ onRegister, isLoggedIn }) {
           </p>
         </form>
       </div>
-    </div>
   );
 }
 

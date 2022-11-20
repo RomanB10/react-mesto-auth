@@ -29,7 +29,3 @@ function ImagePopup({ card, onClose }) {
 }
 
 export default ImagePopup;
-
-//*необходимо отдельо для контейнера с классом "popup__container-image" устанавливать условие по card, 
-//так как в противном случае при отрисовке элемента со значением null в кносоль выдает ошибку (null.link, null.card),что невозможно. 
-//т.е. подстановка card.link, card.name произойдет только при card отличном от null (когда card это объект с нужными полями)
