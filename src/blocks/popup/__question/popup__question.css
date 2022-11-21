@@ -2,12 +2,13 @@
     color: #ffffff;
     cursor: pointer;
     text-decoration: none;
+    margin:0;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 @media (max-width: 510px) {
     .popup__question {
       margin-top: 5px;
-      font-size: 14px;
-      line-height: 17px;
     }
   }

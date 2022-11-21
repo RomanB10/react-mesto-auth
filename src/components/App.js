@@ -31,7 +31,7 @@ function App() {
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
   const [tooltipStatus, setTooltipStatus] = useState("");
 
-  const [selectedCard, setSelectedCard] = useState(null);//выбранная картинка для увеличенного размера
+  const [selectedCard, setSelectedCard] = useState(null); //выбранная картинка для увеличенного размера
 
   const [loggedIn, setLoggedIn] = useState(false); //инфо о авторизованы мы или нет
   const [loading, setLoading] = useState(true); //инфо идет загрузка или нет
@@ -154,36 +154,33 @@ function App() {
       });
   }
 
-
-
   //Запрос к серверу за данными (загрузка текущего ПОЛЬЗОВАТЕЛЯ)
   useEffect(() => {
-    if (loggedIn){
-    api
-      .getUserInfo()
-      .then((dataFromServer) => {
-        setCurrentUser(dataFromServer); //обновленние стейт переменной данными с СЕРВЕРА
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (loggedIn) {
+      api
+        .getUserInfo()
+        .then((dataFromServer) => {
+          setCurrentUser(dataFromServer); //обновленние стейт переменной данными с СЕРВЕРА
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [loggedIn]);
 
   //Запрос к серверу за данными (загрузка КАРТОЧЕК)
   useEffect(() => {
-    if (loggedIn){
-    api
-      .getAllCards()
-      .then((dataFromServer) => {
-        setCards(dataFromServer); //обновленние стейт переменной данными с СЕРВЕРА
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (loggedIn) {
+      api
+        .getAllCards()
+        .then((dataFromServer) => {
+          setCards(dataFromServer); //обновленние стейт переменной данными с СЕРВЕРА
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [loggedIn]);
-
 
   //ЗАПРОС ПРОВЕРКИ ТОКЕНА
   const tokenCheck = useCallback(async () => {
@@ -226,7 +223,7 @@ function App() {
         }
         if (data.token) {
           localStorage.setItem("jwt", data.token); //сохраняем jwt
-          setUserData({email:`${email}`})
+          setUserData({ email: `${email}` });
           setTooltipStatus(`success`);
           setLoggedIn(true);
           return data;
@@ -295,10 +292,7 @@ function App() {
     <div className="root">
       <div className="page root__section">
         <CurrentUserContext.Provider value={currentUser}>
-          <Header
-            onLogout={cbLogout}
-            userData={userData}
-          />
+          <Header onLogout={cbLogout} userData={userData} />
           <Switch>
             <ProtectedRoute
               exact

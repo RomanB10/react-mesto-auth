@@ -28,9 +28,10 @@ function Login({ handleLogin, isLoggedIn }) {
   }
 
   return (
+    <div className="loginContainer">
       <div className={`popup__container popup__container_type_auth`}>
         <form
-          className={`popup__form popup__form_type_auth`}
+          className={`popup__form`}
           action="./scripts/script.js"
           method="post"
           name={`_type_auth`}
@@ -82,6 +83,7 @@ function Login({ handleLogin, isLoggedIn }) {
           </button>
         </form>
       </div>
+    </div>
   );
 }
 

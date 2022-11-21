@@ -1,9 +1,7 @@
 .popup__submit-btn_type_register{
-  /*  margin:186px 0 15px 0;*/
     margin: 186px 0 15px 0;
     background: #FFFFFF;
     color: #000000;
-    /*margin: 0 0 70px 0;*/
 }
 
 @media (max-width: 510px) {

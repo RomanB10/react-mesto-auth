@@ -31,9 +31,10 @@ function Register({ onRegister, isLoggedIn }) {
   }
 
   return (
+    <div className="registerContainer">
       <div className={`popup__container popup__container_type_register`}>
         <form
-          className={`popup__form popup__form_type_register`}
+          className={`popup__form`}
           action="./scripts/script.js"
           method="post"
           name={`_type_auth`}
@@ -98,6 +99,7 @@ function Register({ onRegister, isLoggedIn }) {
           </p>
         </form>
       </div>
+    </div>
   );
 }
 
