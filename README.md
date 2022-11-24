@@ -14,7 +14,7 @@
 
 
 **Ссылка на сайт**
-* [https://romanb10.github.io/mesto-react-auth/index.html](https://romanb10.github.io/mesto-react-auth/index.html)
+* [https://romanb10.github.io/mesto-react-auth/](https://romanb10.github.io/mesto-react-auth/)
 
 **Стэк**
 * HTML
