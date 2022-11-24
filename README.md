@@ -1,4 +1,4 @@
-# Проектная работа учебного курса Яндекс. Практикум: "mesto-react-auth".
+# Проектная работа учебного курса Яндекс. Практикум: "react-mesto-auth".
 
 ### Обзор
 
@@ -14,7 +14,7 @@
 
 
 **Ссылка на сайт**
-* [https://romanb10.github.io/mesto-react-auth/](https://romanb10.github.io/mesto-react-auth/)
+* [https://romanb10.github.io/react-mesto-auth/](https://romanb10.github.io/react-mesto-auth/)
 
 **Стэк**
 * HTML
