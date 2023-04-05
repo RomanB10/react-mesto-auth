@@ -91,3 +91,6 @@
   ![image](https://user-images.githubusercontent.com/105459169/230098256-390e3205-ad4f-4e9d-b3fc-92b8b8df04b4.png)
 - Успешная регистрация
   ![image](https://user-images.githubusercontent.com/105459169/230093985-162f499f-7b43-44d4-a18f-ba1be1142319.png)
+- 404-страница не найдена
+  ![image](https://user-images.githubusercontent.com/105459169/230105939-b9fe4f5a-a3ab-4c4f-b9f4-116e5565cb4d.png)
+
